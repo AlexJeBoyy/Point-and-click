@@ -1,0 +1,52 @@
+
+
+#gameWindow{
+    width: 800px;
+    height: 608px;
+background-color: rgb(72, 72, 255);
+}
+#inventoryBox{
+width: 180px;
+height: 80px;
+background-color: #000;
+}
+#dialogeBar{
+
+}
+#setMainDialog{
+width: 800px;
+height: 64px;
+background-color: white;
+}
+#mainAvatar{
+    width: 32px;
+    height: 64px;
+    background-color: orange;
+}
+#mainSpeach{
+width: 300px;
+background-color: white;
+}
+#counterSpeach{
+width: 300px;
+background-color: white;
+}
+#counterAvatar{
+    width: 32px;
+    height: 64px;
+    background-color: purple;
+}
+#squareTree{
+width: 64px;
+height: 64px;
+background-color: green;
+}
+#mainCharacter{
+width: 32px;
+height: 32px;
+background-color: pink;
+}
+
+#tileMap{
+
+}
