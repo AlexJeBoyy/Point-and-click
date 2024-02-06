@@ -1,0 +1,7 @@
+Level:
+
+background: floor trees etc
+character/player
+foreground
+
+

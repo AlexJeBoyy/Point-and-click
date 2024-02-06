@@ -19,26 +19,42 @@ body {
     background-color: rgb(72, 72, 255);
     grid-column-start: 2;
     grid-row-start: 2;
+    position: relative;
 }
 
 #inventoryBox {
     width: 180px;
     height: 80px;
     background-color: #000;
+    top: 25px;
+    left: 25px;
 }
 
 #dialogeBar {}
 
 #setMainDialog {
     width: 800px;
-    height: 64px;
+    height: 100px;
     background-color: white;
+    top: 508px;
+    left: 0px;
 }
 
 #mainAvatar {
-    width: 32px;
-    height: 64px;
+    width: 125px;
+    height: 125px;
     background-color: orange;
+    top: -25px;
+    left: 0px;
+
+}
+
+#mainName {
+    width: 125px;
+    height: 25px;
+    background-color: gray;
+    top: 583px;
+    left: 0px;
 }
 
 #mainSpeach {
@@ -52,21 +68,50 @@ body {
 }
 
 #counterAvatar {
-    width: 32px;
-    height: 64px;
-    background-color: purple;
+    width: 125px;
+    height: 125px;
+    background-color: rgb(161, 15, 187);
+    top: -25px;
+    right: 0px;
+}
+
+#counterName {
+    width: 125px;
+    height: 25px;
+    background-color: gray;
+    top: 583px;
+    left: 0px;
 }
 
 #squareTree {
     width: 64px;
     height: 64px;
     background-color: green;
+    top: 422px;
+    left: 203px;
 }
 
 #mainCharacter {
     width: 32px;
     height: 32px;
     background-color: pink;
+    top: 304px;
+    left: 400px;
 }
 
 #tileMap {}
+
+.background {
+    position: absolute;
+    z-index: 0;
+}
+
+.character {
+    position: absolute;
+    z-index: 100;
+}
+
+.foreground {
+    position: absolute;
+    z-index: 1000;
+}
