@@ -1,13 +1,24 @@
+* {
+    background-color: antiquewhite;
+}
+
 body {
     display: grid;
-    grid-template-columns: auto, 800px, auto;
-    grid-template-rows: auto, 608, auto;
+    grid-template-columns: auto 800px auto;
+    grid-template-rows: auto 608px auto;
+}
+
+#title {
+    grid-column-start: 2;
+    grid-row-start: 1;
 }
 
 #gameWindow {
     width: 800px;
     height: 608px;
     background-color: rgb(72, 72, 255);
+    grid-column-start: 2;
+    grid-row-start: 2;
 }
 
 #inventoryBox {
