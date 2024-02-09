@@ -87,9 +87,11 @@ body {
 #squareTree {
     width: 64px;
     height: 64px;
-    background-color: green;
+    background-color: rgba(0, 128, 0);
     top: 203px;
     left: 203px;
+    opacity: 1;
+    transition: all 1s ease-in-out;
 }
 
 #mainCharacter {
@@ -119,3 +121,5 @@ body {
     position: absolute;
     z-index: 1000;
 }
+
+.UI {}

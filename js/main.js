@@ -7,9 +7,9 @@ window.onload = (event) => {
 
     //main character 
     const mainCharacter = document.getElementById("mainCharacter");
-
     const offsetCharacter = 16;
 
+    const tree1 = document.getElementById("squareTree");
     gameWindow.onclick = function (e) {
         let rect = gameWindow.getBoundingClientRect();
         let y = e.clientY - rect.top;
@@ -20,6 +20,18 @@ window.onload = (event) => {
         mainCharacter.style.left = `${x - 16}px`;
 
         console.log("y is " + y + "x is " + x)
+
+        console.log(e.target.id)
+
+        switch (e.target.id) {
+            case "squareTree":
+                tree1.style.opacity = 0.5;
+                break;
+            default:
+                tree1.style.opacity = 1;
+                break;
+        }
+
     }
 
     //fix: character going out of bounds
