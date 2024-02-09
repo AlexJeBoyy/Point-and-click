@@ -22,7 +22,7 @@ window.onload = (event) => {
         console.log("y is " + y + "x is " + x)
     }
 
-
+    //fix: character going out of bounds
 
 
 

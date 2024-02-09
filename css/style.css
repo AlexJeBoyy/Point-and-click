@@ -98,7 +98,9 @@ body {
     background-color: pink;
     top: 304px;
     left: 400px;
+
 }
+
 
 #tileMap {}
 
@@ -110,6 +112,7 @@ body {
 .character {
     position: absolute;
     z-index: 100;
+    transition: all 1s ease-in-out;
 }
 
 .foreground {
