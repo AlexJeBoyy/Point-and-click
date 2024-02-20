@@ -32,14 +32,12 @@ window.onload = (event) => {
 
         switch (e.target.id) {
             case "squareTree":
-                tree1.style.opacity = 0.5;
+
                 break;
             case "door":
-                door.style.opacity = 0.5;
+
                 break;
             case "key":
-
-                key.style.opacity = 0.5;
 
                 getItem("Rustey Key", "key");
 
@@ -74,7 +72,7 @@ window.onload = (event) => {
         keyElement.id = itemId;
         keyElement.innerText = itemName;
         await new Promise(resolve => setTimeout(resolve, 1000));
-        inventoryList.appenChild(keyElement);
+        inventoryList.appendChild(keyElement);
 
 
         keyItem.innerText = "-" + itemName;
