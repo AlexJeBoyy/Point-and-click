@@ -1,6 +1,7 @@
 * {
-    background-color: antiquewhite;
+
     transition: all 1s ease-in-out;
+
 }
 
 body {
@@ -29,6 +30,10 @@ body {
     background-color: #00000075;
     top: 25px;
     left: 25px;
+}
+
+#keyitem {
+    background-color: rgba(0, 0, 0, 0);
 }
 
 #dialogeBar {}
@@ -103,6 +108,15 @@ body {
     opacity: 1;
 }
 
+#doorWizardTower {
+    width: 64px;
+    height: 128px;
+    background-color: red;
+    left: 75px;
+    top: 100px;
+}
+
+
 #key {
     width: 32px;
     height: 64px;
@@ -112,10 +126,17 @@ body {
     opacity: 1;
 }
 
+#mushroom {
+    width: 64px;
+    height: 64px;
+    background-color: red;
+    left: 150px;
+    top: 150px;
+}
+
 #mainCharacter {
     width: 32px;
     height: 32px;
-    background-color: pink;
     top: 304px;
     left: 400px;
 

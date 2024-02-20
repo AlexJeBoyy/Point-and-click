@@ -5,8 +5,11 @@ window.onload = (event) => {
     const gameWindow = document.getElementById("gameWindow");
 
     //inventory
-    const inventory = document.getElementById("inventoryBox");
-    let keyItem = document.getElementById("keyItem")
+
+    const inventoryBox = document.getElementById("inventoryBox");
+    let keyItem = document.getElementById("inventoryList");
+    let inventory = [];
+    let inventoryList;
     //main character 
     const mainCharacter = document.getElementById("mainCharacter");
     const offsetCharacter = 16;
@@ -20,11 +23,13 @@ window.onload = (event) => {
         let x = e.clientX - rect.left;
 
         //move character
-        mainCharacter.style.top = `${y - 16}px`;
-        mainCharacter.style.left = `${x - 16}px`;
-
+        if (e.target.id !== "mcImage") {
+            mainCharacter.style.top = `${y - 16}px`;
+            mainCharacter.style.left = `${x - 16}px`;
+        }
 
         setObjectsOpacity();
+
         switch (e.target.id) {
             case "squareTree":
                 tree1.style.opacity = 0.5;
@@ -33,10 +38,14 @@ window.onload = (event) => {
                 door.style.opacity = 0.5;
                 break;
             case "key":
+
                 key.style.opacity = 0.5;
-                test();
 
+                getItem("Rustey Key", "key");
 
+                break;
+            case "mushroom":
+                getItem("coin", "coin");
                 break;
             default:
 
@@ -44,8 +53,39 @@ window.onload = (event) => {
         }
 
     }
+    /**
+     * //checks if value exict within the array
+     * if not then it adds value to the array and show item function
+     * @param {string} itemName 
+     * @param {string} itemId 
+     */
+    function getItem(itemName, itemId) {
+        if (!checkItem(itemName)) {
+            inventory.push(itemName);
+            showItem(itemName, itemId);
+        }
 
-    //fix: character going out of bounds
+
+    }
+    function checkItem(itemName) {
+        return inventory.includes(itemName);
+    }
+    async function showItem(itemName, itemId) {
+        keyElement.id = itemId;
+        keyElement.innerText = itemName;
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        inventoryList.appenChild(keyElement);
+
+
+        keyItem.innerText = "-" + itemName;
+    }
+    function removeItem(itemName, itemId) {
+        inventory = inventory.filter(function (newInventory) {
+            return newInventory !== itemName;
+        });
+
+        document.getElementById(itemId).remove();
+    }
 
     const setObjectsOpacity = () => {
         tree1.style.opacity = 1;
@@ -53,9 +93,7 @@ window.onload = (event) => {
         key.style.opacity = 1;
     }
     async function test() {
-        console.log('start timer');
         await new Promise(resolve => setTimeout(resolve, 1000));
-        console.log('after 1 second');
         document.getElementById("key").remove();
         keyItem.innerText = "-Key"
     }
