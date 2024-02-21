@@ -7,9 +7,9 @@ window.onload = (event) => {
     //inventory
 
     const inventoryBox = document.getElementById("inventoryBox");
-    let keyItem = document.getElementById("inventoryList");
+
     let inventory = [];
-    let inventoryList;
+    const inventoryList = document.getElementById("inventoryList");
     //main character 
     const mainCharacter = document.getElementById("mainCharacter");
     const offsetCharacter = 16;
@@ -39,7 +39,7 @@ window.onload = (event) => {
                 break;
             case "key":
 
-                getItem("Rustey Key", "key");
+                getItem("Rustey Key", "rustyKey");
 
                 break;
             case "mushroom":
@@ -52,31 +52,47 @@ window.onload = (event) => {
 
     }
     /**
-     * //checks if value exict within the array
-     * if not then it adds value to the array and show item function
-     * @param {string} itemName 
-     * @param {string} itemId 
-     */
+  * Checks if the value exists within the array
+  * If not then it adds value to the array and use showItem function
+  * @param {string} itemName 
+  * @param {string} itemId 
+  */
     function getItem(itemName, itemId) {
         if (!checkItem(itemName)) {
             inventory.push(itemName);
             showItem(itemName, itemId);
         }
-
+        console.log(inventory);
 
     }
+    /**
+   * This returns string value if it exist within the array
+   * @param {string} itemName 
+   * @returns 
+   */
     function checkItem(itemName) {
         return inventory.includes(itemName);
     }
+    /**
+         * Needs a name for displaying item and a html id name
+         * @param {string} itemName 
+         * @param {string} itemId 
+         */
     async function showItem(itemName, itemId) {
+        const keyElement = document.createElement("li");
         keyElement.id = itemId;
         keyElement.innerText = itemName;
         await new Promise(resolve => setTimeout(resolve, 1000));
         inventoryList.appendChild(keyElement);
 
 
-        keyItem.innerText = "-" + itemName;
+
     }
+    /**
+     * Removes item from array and the element within the HTML
+     * @param {string} itemName 
+     * @param {string} itemId 
+     */
     function removeItem(itemName, itemId) {
         inventory = inventory.filter(function (newInventory) {
             return newInventory !== itemName;
