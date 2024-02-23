@@ -32,41 +32,41 @@ body {
     left: 25px;
 }
 
-#keyitem {
-    background-color: rgba(0, 0, 0, 0);
-}
+
 
 #dialogeBar {}
 
 #setMainDialog {
     width: 800px;
     height: 100px;
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.25);
 
     top: 508px;
     left: 0px;
 }
 
 #mainAvatar {
-    width: 125px;
-    height: 125px;
-    background-color: orange;
-    top: -25px;
-    left: 0px;
+    width: 100px;
+    height: 100px;
+
+    top: 30px;
+    left: 10px;
+    opacity: 1;
 
 }
 
 #mainName {
-    width: 125px;
+    width: 100px;
     height: 25px;
     background-color: gray;
-    top: 583px;
-    left: 0px;
+    top: 580px;
+    left: 20px;
 }
 
 #mainSpeach {
     width: 300px;
     background-color: white;
+
 }
 
 #counterSpeach {
@@ -96,24 +96,18 @@ body {
     background-color: rgba(0, 128, 0);
     top: 203px;
     left: 203px;
-    opacity: 1;
+    opacity: 0;
 }
 
-#door {
-    width: 64px;
-    height: 128px;
-    background-color: rgb(179, 124, 6);
-    top: 203px;
-    left: 500px;
-    opacity: 1;
-}
+
 
 #doorWizardTower {
-    width: 64px;
-    height: 128px;
+    width: 32px;
+    height: 64px;
     background-color: red;
-    left: 75px;
-    top: 100px;
+    left: 610px;
+    top: 400px;
+    opacity: 0;
 }
 
 
@@ -121,17 +115,18 @@ body {
     width: 32px;
     height: 64px;
     background-color: gold;
-    top: 300px;
-    left: 400px;
-    opacity: 1;
+    top: 342px;
+    left: 465px;
+    opacity: 0;
 }
 
-#mushroom {
+#pond {
     width: 64px;
     height: 64px;
-    background-color: red;
-    left: 150px;
-    top: 150px;
+    background-color: blue;
+    left: 113px;
+    top: 97px;
+    opacity: 0;
 }
 
 #mainCharacter {

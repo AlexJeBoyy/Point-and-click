@@ -5,18 +5,17 @@ window.onload = (event) => {
     const gameWindow = document.getElementById("gameWindow");
 
     //inventory
-
-    const inventoryBox = document.getElementById("inventoryBox");
-
     let inventory = [];
+    console.log(inventory)
+    const inventoryBox = document.getElementById("inventoryBox");
     const inventoryList = document.getElementById("inventoryList");
     //main character 
     const mainCharacter = document.getElementById("mainCharacter");
     const offsetCharacter = 16;
 
-    const tree1 = document.getElementById("squareTree");
-    const door = document.getElementById("door");
-    const key = document.getElementById("key");
+    //const tree1 = document.getElementById("squareTree");
+    //const door = document.getElementById("door");
+    //const key = document.getElementById("key");
     gameWindow.onclick = function (e) {
         let rect = gameWindow.getBoundingClientRect();
         let y = e.clientY - rect.top;
@@ -24,26 +23,32 @@ window.onload = (event) => {
 
         //move character
         if (e.target.id !== "mcImage") {
-            mainCharacter.style.top = `${y - 16}px`;
-            mainCharacter.style.left = `${x - 16}px`;
+            mainCharacter.style.top = `${y - offsetCharacter}px`;
+            mainCharacter.style.left = `${x - offsetCharacter}px`;
         }
 
-        setObjectsOpacity();
+        //setObjectsOpacity();
 
         switch (e.target.id) {
             case "squareTree":
 
                 break;
-            case "door":
-
+            case "doorWizardTower":
+                if (checkItem("Rusty Key")) {
+                    console.log("I opened the door. Yeah!");
+                } else if (checkItem("Coin")) {
+                    removeItem("Coin", "coin")
+                    console.log("Oh no I lost the coin and it didn't open the door.. Feel kinda stupid..");
+                } else {
+                    console.log("Fuck this door is locked and I don't have a key. boohoo :(");
+                }
                 break;
             case "key":
-
-                getItem("Rustey Key", "rustyKey");
+                getItem("Rusty Key", "rustyKey");
 
                 break;
-            case "mushroom":
-                getItem("coin", "coin");
+            case "pond":
+                getItem("Coin", "coin");
                 break;
             default:
 
@@ -79,6 +84,7 @@ window.onload = (event) => {
          * @param {string} itemId 
          */
     async function showItem(itemName, itemId) {
+        console.log(itemName)
         const keyElement = document.createElement("li");
         keyElement.id = itemId;
         keyElement.innerText = itemName;
@@ -101,11 +107,11 @@ window.onload = (event) => {
         document.getElementById(itemId).remove();
     }
 
-    const setObjectsOpacity = () => {
-        tree1.style.opacity = 1;
-        door.style.opacity = 1;
-        key.style.opacity = 1;
-    }
+    //const setObjectsOpacity = () => {
+    //  tree1.style.opacity = 1;
+    // door.style.opacity = 1;
+    // key.style.opacity = 1;
+    //}
     async function test() {
         await new Promise(resolve => setTimeout(resolve, 1000));
         document.getElementById("key").remove();
