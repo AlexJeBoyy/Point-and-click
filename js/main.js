@@ -56,6 +56,7 @@ window.onload = (event) => {
                     break;
                 case "doorWizardTower":
                     if (doorUnlocked) {
+                        //change world 'none' is disable 'block' is enable
                         world1.style.display = 'none';
                         world2.style.display = 'block';
                     }
