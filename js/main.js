@@ -27,6 +27,7 @@ window.onload = (event) => {
     //worlds
     const world1 = document.getElementById("world1");
     const world2 = document.getElementById("world2");
+    world2.style.display = 'none';
     //bools
     let doorUnlocked = false;
 
@@ -57,8 +58,17 @@ window.onload = (event) => {
                 case "doorWizardTower":
                     if (doorUnlocked) {
                         //change world 'none' is disable 'block' is enable
-                        world1.style.display = 'none';
-                        world2.style.display = 'block';
+                        // Fade out world 1
+                        world1.style.transition = 'opacity 1s ease-in-out';
+                        world1.style.opacity = '0';
+
+                        // After the fade out animation completes, hide world 1 and fade in world 2
+                        setTimeout(function () {
+                            world1.style.display = 'none';
+                            world1.style.transition = ''; // Reset transition property
+                            world2.style.display = 'block';
+                            world2.style.opacity = '1'; // Fade in world 2
+                        }, 1000);
                     }
                     else if (checkItem("Rusty Key")) {
                         showMessage(mainSpeach, "I opened the door. Yeah!", mainAudio)
