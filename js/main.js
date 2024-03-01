@@ -74,7 +74,7 @@ window.onload = (event) => {
                         showMessage(mainSpeach, "I opened the door. Yeah!", mainAudio)
                         setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
                         setTimeout(showMessage, 4.1 * sec, counterSpeach, "Click on the door a second time to enter :)", counterAudio);
-                        setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
+                        setTimeout(function () { counterAvatar.style.opacity = 0; }, 8 * sec);
                         doorUnlocked = true;
                     } else if (checkItem("Coin")) {
                         removeItem("Coin", "coin")
