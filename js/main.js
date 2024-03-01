@@ -17,6 +17,7 @@ window.onload = (event) => {
     //speach bubbles
     const mainSpeach = document.getElementById("mainSpeach");
     const counterSpeach = document.getElementById("counterSpeach");
+    const setMainDialog = document.getElementById('setMainDialog');
     // audio for dialog
     const mainAudio = document.getElementById("mainAudio");
     const counterAudio = document.getElementById("counterAudio");
@@ -53,7 +54,11 @@ window.onload = (event) => {
                     setTimeout(showMessage, 4.1 * sec, counterSpeach, "I can talk you know..", counterAudio);
                     setTimeout(showMessage, 8.1 * sec, mainSpeach, "Wait what? That's not normal", mainAudio);
                     setTimeout(showMessage, 12.1 * sec, counterSpeach, "Just shut up.. You want a key.. Check the pillar.", counterAudio);
-                    setTimeout(function () { counterAvatar.style.opacity = 0; }, 16 * sec);
+                    setTimeout(function () {
+                        counterAvatar.style.opacity = 0;
+                        setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                    }, 16 * sec);
+                    // setTimeout(hideMessage, 4 * sec, targetBubble, targetSound, setMainDialog);
                     break;
                 case "doorWizardTower":
                     if (doorUnlocked) {
@@ -74,7 +79,10 @@ window.onload = (event) => {
                         showMessage(mainSpeach, "I opened the door. Yeah!", mainAudio)
                         setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
                         setTimeout(showMessage, 4.1 * sec, counterSpeach, "Click on the door a second time to enter :)", counterAudio);
-                        setTimeout(function () { counterAvatar.style.opacity = 0; }, 8 * sec);
+                        setTimeout(function () {
+                            counterAvatar.style.opacity = 0;
+                            setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                        }, 8 * sec);
                         doorUnlocked = true;
                     } else if (checkItem("Coin")) {
                         removeItem("Coin", "coin")
@@ -176,17 +184,19 @@ window.onload = (event) => {
         targetSound.play();
         targetBubble.innerText = message;
         targetBubble.style.opacity = 1;
-        setTimeout(hideMessage, 4 * sec, targetBubble, targetSound);
+        setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0.25)';
+        setTimeout(hideMessage, 4 * sec, targetBubble, targetSound, setMainDialog);
     }
     /**
-         * Hides message and pauze the audio
-         * @param {getElementById} targetBubble 
-         * @param {getElementById} targetSound 
-         */
-    function hideMessage(targetBubble, targetSound) {
+     * Hides message and pauze the audio
+     * @param {getElementById} targetBubble 
+     * @param {getElementById} targetSound 
+     */
+    function hideMessage(targetBubble, targetSound, setMainDialog) {
         targetSound.pause();
         targetBubble.innerText = "...";
         targetBubble.style.opacity = 0;
+
     }
 
 }
