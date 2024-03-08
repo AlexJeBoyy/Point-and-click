@@ -85,13 +85,13 @@ window.onload = (event) => {
                     }
                     else if (checkItem("Rusty Key")) {
                         removeItem("Rusty Key", "rustyKey")
-                        //showMessage(mainSpeach, "I opened the door. Yeah!", mainAudio)
-                        //setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-                        //setTimeout(showMessage, 4.1 * sec, counterSpeach, "Click on the door a second time to enter :)", counterAudio);
-                        //setTimeout(function () {
-                        //    counterAvatar.style.opacity = 0;
-                        //    setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-                        //}, 8 * sec);
+                        showMessage(mainSpeach, "I opened the door. Yeah!", mainAudio)
+                        setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+                        setTimeout(showMessage, 4.1 * sec, counterSpeach, "Click on the door a second time to enter :)", counterAudio);
+                        setTimeout(function () {
+                            counterAvatar.style.opacity = 0;
+                            setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                        }, 8 * sec);
                         doorUnlocked = true;
                     } else if (checkItem("Coin")) {
                         removeItem("Coin", "coin")
