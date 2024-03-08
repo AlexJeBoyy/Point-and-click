@@ -126,25 +126,28 @@ window.onload = (event) => {
                                 setTimeout(showMessage, 24.1 * sec, mainSpeach, "Bye old wizzard man.", mainAudio);
                                 setTimeout(showMessage, 28.1 * sec, counterSpeach, "Just shut up..", counterAudio, dialogSkip = true);
                                 getItem("Nice Key", "key2");
-                                if (checkItem("Coin", "coin")) {
-                                    removeItem("Coin", "coin");
-
-                                }
                                 if (checkItem("Goblin Coin", "coing")) {
                                     removeItem("Goblin Coin", "coing");
 
                                 }
+                                else if (checkItem("Coin", "coin")) {
+                                    removeItem("Coin", "coin");
+
+                                }
+
                                 setTimeout(function () {
-                                    counterAvatar.style.opacity = 0;
                                     setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                                    counterAvatar.style.opacity = 0;
+
                                 }, 28 * sec);
                             }
                             else {
                                 setTimeout(showMessage, 16.1 * sec, mainSpeach, "I dont have a coin for you.", mainAudio);
                                 setTimeout(showMessage, 20.1 * sec, counterSpeach, "Go search one, maybe the goblin has one.", counterAudio, dialogSkip = true);
                                 setTimeout(function () {
-                                    counterAvatar.style.opacity = 0;
                                     setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                                    counterAvatar.style.opacity = 0;
+
                                 }, 24 * sec);
                             }
 
@@ -164,8 +167,9 @@ window.onload = (event) => {
                                 setTimeout(showMessage, 8.1 * sec, counterSpeach, "Go search one, maybe the goblin has one.", counterAudio);
                             }
                             setTimeout(function () {
-                                counterAvatar.style.opacity = 0;
                                 setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                                counterAvatar.style.opacity = 0;
+
                             }, 16 * sec);
                         }
 
