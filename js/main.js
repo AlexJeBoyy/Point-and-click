@@ -181,7 +181,7 @@ window.onload = (event) => {
                         setTimeout(showMessage, 4.1 * sec, counterSpeach, "You seem like a nice young person, maybe i do.", counterAudio);
                         setTimeout(showMessage, 8.1 * sec, mainSpeach, "Can you give it to me then? Please.", mainAudio);
                         setTimeout(showMessage, 12.1 * sec, counterSpeach, "Alright, here you have it", counterAudio);
-                        getItem("Coin", "coin2"), 16.1 * sec;
+                        getItem("Coin", "coin2");
                     }
                     setTimeout(function () {
                         goblinAvatar.style.opacity = 0;
