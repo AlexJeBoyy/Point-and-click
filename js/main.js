@@ -33,6 +33,7 @@ window.onload = (event) => {
     //bools
     let doorUnlocked = false;
     let dialogSkip = false;
+    let goblinCoin = false;
 
 
 
@@ -111,65 +112,68 @@ window.onload = (event) => {
                     break;
                 //world 2
                 case "wizzardMan":
-                    if (!dialogSkip) {
-                        showMessage(mainSpeach, "Hello magical old man, i would like to buy that key you have there.", mainAudio);
-                        setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-                        setTimeout(showMessage, 4.1 * sec, counterSpeach, "Why do you want to buy it and i find magical old man a bit ofencive. Could you just call me a wizzard?", counterAudio);
-                        setTimeout(showMessage, 8.1 * sec, mainSpeach, "I need it to get home and alr wizzard man", mainAudio);
-                        setTimeout(showMessage, 12.1 * sec, counterSpeach, "You can buy it with 1 coin snob.", counterAudio);
+                    if (!checkItem("Nice Key", "key2")) {
+                        if (!dialogSkip) {
+                            showMessage(mainSpeach, "Hello magical old man, i would like to buy that key you have there.", mainAudio);
+                            setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+                            setTimeout(showMessage, 4.1 * sec, counterSpeach, "Why do you want to buy it and i find magical old man a bit ofencive. Could you just call me a wizzard?", counterAudio);
+                            setTimeout(showMessage, 8.1 * sec, mainSpeach, "I need it to get home and alr wizzard man", mainAudio);
+                            setTimeout(showMessage, 12.1 * sec, counterSpeach, "You can buy it with 1 coin snob.", counterAudio);
 
-                        if (checkItem("Coin", "coin") || checkItem("Coin", "coin2")) {
-                            setTimeout(showMessage, 16.1 * sec, mainSpeach, "I have a coin for you", mainAudio);
-                            setTimeout(showMessage, 20.1 * sec, counterSpeach, "Thank you here is the key.", counterAudio);
-                            setTimeout(showMessage, 24.1 * sec, mainSpeach, "Bye old wizzard man.", mainAudio);
-                            setTimeout(showMessage, 28.1 * sec, counterSpeach, "Just shut up..", counterAudio, dialogSkip = true);
-                            getItem("Nice Key", "key2");
-                            if (checkItem("Coin", "coin")) {
-                                removeItem("Coin", "coin");
+                            if (checkItem("Coin", "coin") || checkItem("Goblin Coin", "coing")) {
+                                setTimeout(showMessage, 16.1 * sec, mainSpeach, "I have a coin for you", mainAudio);
+                                setTimeout(showMessage, 20.1 * sec, counterSpeach, "Thank you here is the key.", counterAudio);
+                                setTimeout(showMessage, 24.1 * sec, mainSpeach, "Bye old wizzard man.", mainAudio);
+                                setTimeout(showMessage, 28.1 * sec, counterSpeach, "Just shut up..", counterAudio, dialogSkip = true);
+                                getItem("Nice Key", "key2");
+                                if (checkItem("Coin", "coin")) {
+                                    removeItem("Coin", "coin");
+
+                                }
+                                if (checkItem("Goblin Coin", "coing")) {
+                                    removeItem("Goblin Coin", "coing");
+
+                                }
+                                setTimeout(function () {
+                                    counterAvatar.style.opacity = 0;
+                                    setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                                }, 28 * sec);
                             }
-                            else if (checkItem("Coin", "coin2")) {
-                                removeItem("Coin", "coin2");
+                            else {
+                                setTimeout(showMessage, 16.1 * sec, mainSpeach, "I dont have a coin for you.", mainAudio);
+                                setTimeout(showMessage, 20.1 * sec, counterSpeach, "Go search one, maybe the goblin has one.", counterAudio, dialogSkip = true);
+                                setTimeout(function () {
+                                    counterAvatar.style.opacity = 0;
+                                    setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                                }, 24 * sec);
+                            }
+
+                        }
+                        else {
+                            setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+                            showMessage(counterSpeach, "Do you have the coin?", counterAudio);
+                            if (checkItem("Coin", "coin") || checkItem("Goblin Coin", "coing")) {
+                                setTimeout(showMessage, 4.1 * sec, mainSpeach, "I have a coin for you", mainAudio);
+                                setTimeout(showMessage, 8.1 * sec, counterSpeach, "Thank you here is the key.", counterAudio);
+                                setTimeout(showMessage, 12.1 * sec, mainSpeach, "Bye old wizzard man.", mainAudio);
+                                setTimeout(showMessage, 16.1 * sec, counterSpeach, "Just shut up..", counterAudio);
+                                getItem("Nice Key", "key2");
+                            }
+                            else {
+                                setTimeout(showMessage, 4.1 * sec, mainSpeach, "I have a coin for you", mainAudio);
+                                setTimeout(showMessage, 8.1 * sec, counterSpeach, "Go search one, maybe the goblin has one.", counterAudio);
                             }
                             setTimeout(function () {
                                 counterAvatar.style.opacity = 0;
                                 setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-                            }, 28 * sec);
-                        }
-                        else {
-                            setTimeout(showMessage, 16.1 * sec, mainSpeach, "I dont have a coin for you.", mainAudio);
-                            setTimeout(showMessage, 20.1 * sec, counterSpeach, "Go search one, maybe the goblin has one.", counterAudio, dialogSkip = true);
-                            setTimeout(function () {
-                                counterAvatar.style.opacity = 0;
-                                setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-                            }, 24 * sec);
+                            }, 16 * sec);
                         }
 
                     }
-                    else {
-                        setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-                        showMessage(counterSpeach, "Do you have the coin?", counterAudio);
-                        if (checkItem("Coin", "coin") || checkItem("Coin", "coin2")) {
-                            setTimeout(showMessage, 4.1 * sec, mainSpeach, "I have a coin for you", mainAudio);
-                            setTimeout(showMessage, 8.1 * sec, counterSpeach, "Thank you here is the key.", counterAudio);
-                            setTimeout(showMessage, 12.1 * sec, mainSpeach, "Bye old wizzard man.", mainAudio);
-                            setTimeout(showMessage, 16.1 * sec, counterSpeach, "Just shut up..", counterAudio);
-                            getItem("Nice Key", "key2");
-                        }
-                        else {
-                            showMessage(mainSpeach, "I don't have a key for you", mainAudio);
-                            setTimeout(showMessage, 4.1 * sec, counterSpeach, "Go search one, maybe the goblin has one.", counterAudio);
-                        }
-                        setTimeout(function () {
-                            counterAvatar.style.opacity = 0;
-                            setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-                        }, 16 * sec);
-                    }
-
-
 
                     break;
                 case "goblin":
-                    if (checkItem("Coin", "coin2") || checkItem("Coin", "coin")) {
+                    if (checkItem("Goblin Coin", "coing") || checkItem("Coin", "coin") || goblinCoin) {
                         setTimeout(function () { goblinAvatar.style.opacity = 1; }, 4 * sec);
                         showMessage(mainSpeach, "Hey goblin do you happen to have another coin for me?.", mainAudio);
                         setTimeout(showMessage, 4.1 * sec, counterSpeach, "You already have a coin. No.", counterAudio);
@@ -181,12 +185,14 @@ window.onload = (event) => {
                         setTimeout(showMessage, 4.1 * sec, counterSpeach, "You seem like a nice young person, maybe i do.", counterAudio);
                         setTimeout(showMessage, 8.1 * sec, mainSpeach, "Can you give it to me then? Please.", mainAudio);
                         setTimeout(showMessage, 12.1 * sec, counterSpeach, "Alright, here you have it", counterAudio);
-                        getItem("Coin", "coin2");
+                        getItem("Goblin Coin", "coing");
+                        goblinCoin = true;
                     }
                     setTimeout(function () {
-                        goblinAvatar.style.opacity = 0;
                         setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-                    }, 12 * sec);
+                        goblinAvatar.style.opacity = 0;
+
+                    }, 16 * sec);
 
                     break;
                 case "backDoor":
