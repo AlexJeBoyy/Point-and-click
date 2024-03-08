@@ -31,6 +31,8 @@ window.onload = (event) => {
     world2.style.display = 'none';
     //bools
     let doorUnlocked = false;
+    let hasCoin = false;
+    let dialogSkip = false;
 
 
     gameWindow.onclick = function (e) {
@@ -48,6 +50,7 @@ window.onload = (event) => {
             //setObjectsOpacity();
 
             switch (e.target.id) {
+                //world 1
                 case "statue":
                     showMessage(mainSpeach, "Hey a statue.. Looks okay.", mainAudio);
                     setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
@@ -64,9 +67,12 @@ window.onload = (event) => {
                     if (doorUnlocked) {
                         //change world 'none' is disable 'block' is enable
                         // Fade out world 1
+
                         world1.style.transition = 'opacity 1s ease-in-out';
                         world1.style.opacity = '0';
-
+                        world2.style.display = 'block';
+                        world1.style.transition = 'opacity 1s ease-out-in';
+                        world2.style.opacity = '1';
                         // After the fade out animation completes, hide world 1 and fade in world 2
                         setTimeout(function () {
                             world1.style.display = 'none';
@@ -76,17 +82,19 @@ window.onload = (event) => {
                         }, 1000);
                     }
                     else if (checkItem("Rusty Key")) {
-                        showMessage(mainSpeach, "I opened the door. Yeah!", mainAudio)
-                        setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
-                        setTimeout(showMessage, 4.1 * sec, counterSpeach, "Click on the door a second time to enter :)", counterAudio);
-                        setTimeout(function () {
-                            counterAvatar.style.opacity = 0;
-                            setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
-                        }, 8 * sec);
+                        removeItem("Rusty Key", "rustyKey")
+                        //showMessage(mainSpeach, "I opened the door. Yeah!", mainAudio)
+                        //setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+                        //setTimeout(showMessage, 4.1 * sec, counterSpeach, "Click on the door a second time to enter :)", counterAudio);
+                        //setTimeout(function () {
+                        //    counterAvatar.style.opacity = 0;
+                        //    setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                        //}, 8 * sec);
                         doorUnlocked = true;
                     } else if (checkItem("Coin")) {
                         removeItem("Coin", "coin")
                         showMessage(mainSpeach, "Oh no I lost the coin and it didn't open the door.. Feel kinda stupid..", heroAudio);
+
                     } else {
                         showMessage(mainSpeach, "Fuck this door is locked and I don't have a key. boohoo :(", heroAudio);
                     }
@@ -96,8 +104,41 @@ window.onload = (event) => {
                     //ChangeInventory('key', "add")
                     break;
                 case "pond":
+
                     getItem("Coin", "coin");
+                    hasCoin = true;
                     break;
+                //world 2
+                case "wizzardMan":
+                    if (!dialogSkip) {
+                        showMessage(mainSpeach, "Hello magical old man, i would like to buy that key you have there.", mainAudio);
+                        setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+                        setTimeout(showMessage, 4.1 * sec, counterSpeach, "Why do you want to buy it and i find magical old man a bit ofencive. Could you just call me a wizzard?", counterAudio);
+                        setTimeout(showMessage, 8.1 * sec, mainSpeach, "I need it to get home and alr wizzard man", mainAudio);
+                        setTimeout(showMessage, 12.1 * sec, counterSpeach, "You can buy it with 1 coin snob.", counterAudio);
+                        dialogSkip = true;
+                    }
+                    else {
+                        setTimeout(function () { counterAvatar.style.opacity = 1; }, 4 * sec);
+                        showMessage(counterSpeach, "Do you have the coin?", counterAudio);
+
+                    }
+                    if (checkItem("Coin")) {
+                        showMessage(mainSpeach, "I have 1 coin for you", mainAudio);
+                        setTimeout(showMessage, 4.1 * sec, counterSpeach, "Thank you here is the key.", counterAudio);
+                        setTimeout(showMessage, 8.1 * sec, mainSpeach, "Bye old wizzard man.", mainAudio);
+                        setTimeout(showMessage, 12.1 * sec, counterSpeach, "Just shut up..", counterAudio);
+                        setTimeout(function () {
+                            counterAvatar.style.opacity = 0;
+                            setMainDialog.style.backgroundColor = 'rgba(255, 255, 255, 0)';
+                        }, 16 * sec);
+                    }
+                    else {
+
+                    }
+
+                    break;
+
 
                 default:
 
@@ -114,11 +155,11 @@ window.onload = (event) => {
 
 
     /**
-  * Checks if the value exists within the array
-  * If not then it adds value to the array and use showItem function
-  * @param {string} itemName 
-  * @param {string} itemId 
-  */
+    * Checks if the value exists within the array
+    * If not then it adds value to the array and use showItem function
+    * @param {string} itemName 
+    * @param {string} itemId 
+    */
     function getItem(itemName, itemId) {
         if (!checkItem(itemName)) {
             inventory.push(itemName);
@@ -128,10 +169,10 @@ window.onload = (event) => {
 
     }
     /**
-   * This returns string value if it exist within the array
-   * @param {string} itemName 
-   * @returns 
-   */
+    * This returns string value if it exist within the array
+    * @param {string} itemName 
+    * @returns 
+    */
     function checkItem(itemName) {
         return inventory.includes(itemName);
     }
