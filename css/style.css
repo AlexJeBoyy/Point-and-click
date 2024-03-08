@@ -96,6 +96,14 @@ body {
     right: 10px;
 }
 
+#goblinAvatar {
+    opacity: 0;
+    width: 100px;
+    height: 100px;
+    top: 0px;
+    right: 10px;
+}
+
 #world1 {
     opacity: 1;
 }
@@ -176,6 +184,11 @@ body {
 }
 
 #wizzard {
+    width: 100px;
+    height: 100px;
+}
+
+#goblinBlep {
     width: 100px;
     height: 100px;
 }
